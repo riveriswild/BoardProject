@@ -1,0 +1,19 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+<h2>Вход</h2>
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p>Вы уже выполнили вход.</p>
+{% else %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Войти">
+</form>
+
+{% endif %}
+
+{% endblock content %}

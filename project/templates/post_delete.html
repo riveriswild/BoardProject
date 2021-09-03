@@ -1,0 +1,14 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+{{ post.title }}
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим сам post, ID которого было передано в адрес -->
+{% block content %}
+<br>
+Вы действительно хотите удалить данный пост?
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="подтвердить"></form>
+{% endblock content %}

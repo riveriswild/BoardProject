@@ -1,0 +1,15 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+<h2>Профиль пользователя {{ user.name }}</h2>
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'posts' %}">Все объявления</a> <br>
+<a href="{% url 'reactions' %}"> Отклики на мои посты</a> <br>
+<a href="{% url 'my_reactions' %}"> Мои отклики</a> <br>
+<a href="{% url 'add' %}"> Создать пост</a> <br>
+<a href="{% url 'logout' %}">Выйти</a> <br> <br>
+<p>Привет, {{ user.username }}</p>
+
+{% endblock content %}

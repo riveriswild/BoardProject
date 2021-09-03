@@ -1,0 +1,19 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+{{ flatpage.title }}
+{% endblock title %}
+
+{% block content %}
+{{ post.title }}<br>
+{{ post.postAuthor }}<br>
+{{ post.text|safe}}<br>
+
+<h3>Ваш отклик:</h3>
+  <form method="POST">
+    {% csrf_token %}
+      {{ reaction_form }}
+       <input type="submit" value="Добавить отклик">
+  </form>
+
+{% endblock content %}

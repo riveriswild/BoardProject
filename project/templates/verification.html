@@ -1,0 +1,33 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+<h2>Вход</h2>
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p>Вы уже выполнили вход.</p>
+{% else %}
+<form method="post">
+   {% csrf_token %}
+   <label for="code">Введите код подтверждения: </label>
+   <input id="code" type="text" name="code" value="Your code">
+   <label for="user_name">Введите вашу почту: </label>
+   <input id="user_name" type="text" name="email" value="Your email">
+   <input type="submit" value=Отправить</button>
+</form>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">
+                {{ message|safe }}
+                <a href="#" class="close">✖</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+{{ flatpage.title }}
+{% endblock title %}
+
+{% block content %}
+{{ postwr.title }}<br>
+{{ postwr.postAuthor }}<br>
+{{ postwr.text|safe}}<br>
+
+{% for reaction in reactions %}
+{{ reaction.rUser }} <br>
+{{ reaction.text }} <br><br>
+{% if reaction.accepted %}
+  Принято
+  {% else %}
+<a href="{% url 'deleter' reaction.id %}"> Удалить </a> <br>
+<a href="{% url 'accept' reaction.id %}"> Принять </a> <br>
+  {% endif %}
+
+  <br> <br>
+{% endfor %}
+
+{% endblock content %}
